@@ -13,9 +13,12 @@ namespace Client
         {
             EndpointAddress ep = new EndpointAddress("http://Localhost:8000/HelloIndigo/HelloIndigoService");
 
-            IHelloIndigoService proxy = ChannelFactory<IHelloIndigoService>.CreateChannel(new BasicHttpBinding(), ep);
+            //IHelloIndigoService proxy = ChannelFactory<IHelloIndigoService>.CreateChannel(new WSHttpBinding(), ep);
+            var Client = new HelloIndigoService(new WSHttpBinding(), ep);
 
-            string s = proxy.HelloIndigo();
+            // string configSettings = proxy.
+            //string s = proxy.HelloIndigo();
+            string s = Client.HelloIndigo();
             Console.WriteLine(s);
 
             Console.WriteLine("Press <ENTER> to terminate client.");
